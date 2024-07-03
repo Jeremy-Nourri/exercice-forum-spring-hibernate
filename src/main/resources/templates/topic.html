@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+    <header>
+        <div th:replace="~{index :: navbar}"></div>
+    <header>
+    <main>
+        <h1 th:text="${topic.title}"></h1>
+        <p th:text="${topic.dateOfTopic}"></p>
+        <p th:text="${topic.authorOfTopic.getUsername()}"></p>
+
+        <h2>Messages</h2>
+        <p th:if="${topic.messages.size() > 0}">Nombre de message : <span th:text="${topic.messages.size()}"></span></p>
+        <p th:if="${topic.messages.size() == 0}">Aucun message</p>
+        <ul>
+            <li th:each="message : ${topic.messages}">
+                <p th:text="${message.content}"></p>
+                <p th:text="${message.dateOfMessage}"></p>
+                <p th:text="${message.authorOfMessage.getUsername()}"></p>
+            </li>
+        </ul>
+
+        <h2>Poster un message</h2>
+        <form method="post" th:action="@{/topic/{id}/message/create(id=${topic.id})}" th:object="${newMessage}">
+            <label for="content">Message</label>
+            <textarea id="content" name="content"></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+
+    </main>
+
+
+</body>
+</html>

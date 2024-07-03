@@ -12,4 +12,5 @@ public interface IUserService {
     boolean signIn(String username, String password);
     boolean verifyIfUserIsLogged();
     void logout();
+    User getLoggedUser();
 }

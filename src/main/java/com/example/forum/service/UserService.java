@@ -11,6 +11,7 @@ public class UserService implements IUserService{
 
     private final UserRepository userRepository;
 
+
     private HttpSession _httpSession;
     @Autowired
     public void setHttpSession(HttpSession httpSession) {
@@ -61,6 +62,7 @@ public class UserService implements IUserService{
         User user = userRepository.findByUsername(username);
         if(user != null && user.getPassword().equals(password)){
             _httpSession.setAttribute("isLogged", "true");
+            _httpSession.setAttribute("username", user.getUsername());
             return true;
         }
         return false;
@@ -70,8 +72,8 @@ public class UserService implements IUserService{
     public boolean verifyIfUserIsLogged() {
         try {
             String isLogged = (String) _httpSession.getAttribute("isLogged");
-            return isLogged.equals("true");
-        } catch (Exception e) {
+            return "true".equals(isLogged);
+        } catch (NullPointerException e) {
             return false;
         }
     }
@@ -79,6 +81,14 @@ public class UserService implements IUserService{
     @Override
     public void logout() {
         _httpSession.removeAttribute("isLogged");
+    }
+
+    @Override
+    public User getLoggedUser() {
+        if(verifyIfUserIsLogged()){
+            return userRepository.findByUsername((String) _httpSession.getAttribute("username"));
+        }
+        return null;
     }
 
 

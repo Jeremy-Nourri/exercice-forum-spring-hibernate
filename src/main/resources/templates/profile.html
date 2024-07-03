@@ -6,6 +6,9 @@
     <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
 </head>
 <body>
+<header>
+    <div th:replace="~{index :: navbar}"></div>
+</header>
 <main>
     <h1>Profil de l'utilisateur</h1>
     <p>Identifiant: <span th:text="${user.id}"></span></p>

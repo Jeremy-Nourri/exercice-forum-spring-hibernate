@@ -35,12 +35,6 @@ button, input, label {
     line-height: 1.1;
 }
 
-/* Remove default button styles */
-button {
-    border: none;
-    cursor: pointer;
-}
-
 /* Balance text wrapping on headings */
 h1, h2,
 h3, h4 {
@@ -125,4 +119,37 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    label {
+        margin-bottom: 0.5rem;
+    }
+
+    input {
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+    }
+    button {
+        padding: 0.5rem 1rem;
+        border: none;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    button:hover {
+        background-color: #555;
+    }
+
 }
+

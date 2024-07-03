@@ -1,15 +1,12 @@
 package com.example.forum.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -29,4 +26,6 @@ public class User {
 
     @OneToMany(mappedBy = "authorOfMessage")
     private List<Message> messages;
+
+
 }

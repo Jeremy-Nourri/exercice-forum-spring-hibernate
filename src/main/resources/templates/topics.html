@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des sujets du forum</title>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+    <header>
+        <div th:replace="~{index :: navbar}"></div>
+    </header>
+    <main>
+        <h1>Liste des sujets du forum</h1>
+        <ul>
+            <li th:each="topic : ${topics}">
+                <a th:href="@{/topic/{id}(id=${topic.id})}" th:text="${topic.title}"></a>
+            </li>
+        </ul>
+
+        <h2>Créer un sujet</h2>
+        <form method="post" th:action="@{/topic/create}" th:object="${newTopic}">
+            <label for="title">Titre</label>
+            <input type="text" id="title" name="title" />
+            <button type="submit">Créer</button>
+        </form>
+    </main>
+
+
+
+
+</body>
+</html>

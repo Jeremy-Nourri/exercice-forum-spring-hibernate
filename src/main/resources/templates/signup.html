@@ -6,7 +6,9 @@
     <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
 </head>
 <body>
-
+<header>
+    <div th:replace="~{index :: navbar}"></div>
+</header>
 <main>
     <h1>Créer un compte</h1>
     <div th:if="${error != null}">
