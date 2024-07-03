@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'inscription'</title>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+
+<main>
+    <h1>Créer un compte</h1>
+    <div th:if="${error != null}">
+        <p>Le pseudo que vous avez entré est déjà utilisé</p>
+        <p>Veuillez en saisir un autre.</p>
+    </div>
+
+    <form th:action="@{/signup}" method="post" th:object="${user}">
+        <div>
+            <label for="username">Pseudo</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Créer un compte</button>
+    </form>
+    <a th:href="@{/signin}">Se connecter</a>
+</main>
+
+</body>
+</html>

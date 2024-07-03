@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil de l'utilisateur</title>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+</head>
+<body>
+<main>
+    <h1>Profil de l'utilisateur</h1>
+    <p>Identifiant: <span th:text="${user.id}"></span></p>
+    <p>Pseudo: <span th:text="${user.username}"></span></p>
+<!--    <a th:href="@{/logout}">Se déconnecter</a>-->
+</main>
+</body>
+</html>

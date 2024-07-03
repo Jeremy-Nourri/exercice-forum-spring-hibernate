@@ -24,11 +24,9 @@ public class User {
 
     private String password;
 
-    private String email;
     @OneToMany(mappedBy = "authorOfTopic")
-
     private List<Topic> topics;
-    @OneToMany(mappedBy = "authorOfMessage")
 
+    @OneToMany(mappedBy = "authorOfMessage")
     private List<Message> messages;
 }
